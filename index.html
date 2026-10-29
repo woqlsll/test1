@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Future.zip - 공학 포트폴리오</title>
+  <style>
+    /* 기본 변수 및 리셋 */
+    :root {
+      --bg-color: #0f172a;        /* 깊은 네이비 */
+      --card-bg: #1e293b;         /* 카드 배경 네이비 */
+      --mint: #2dd4bf;            /* 포인트 민트 */
+      --mint-glow: rgba(45, 212, 191, 0.2);
+      --text-main: #f8fafc;       /* 메인 텍스트 */
+      --text-sub: #94a3b8;        /* 서브 텍스트 */
+      --accent-orange: #f97316;  /* 포인트 컬러 */
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    /* 헤더 */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--mint);
+      letter-spacing: -0.5px;
+    }
+
+    .tag {
+      background: var(--mint-glow);
+      color: var(--mint);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    /* 카드 공통 스타일 */
+    .card {
+      background-color: var(--card-bg);
+      border-radius: 16px;
+      padding: 28px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .section-title {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--mint);
+      margin-bottom: 12px;
+      font-weight: 700;
+    }
+
+    /* 1. MY PROFILE */
+    .profile-card {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+      border-left: 4px solid var(--mint);
+    }
+
+    .profile-card h1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      word-break: keep-all;
+    }
+
+    .profile-card p {
+      color: var(--text-sub);
+      font-size: 1.05rem;
+      word-break: keep-all;
+    }
+
+    /* 2. MY INTEREST */
+    .interest-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 16px;
+      margin-top: 8px;
+    }
+
+    .interest-item {
+      background-color: rgba(15, 23, 42, 0.6);
+      border-radius: 12px;
+      padding: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      transition: transform 0.2s, border-color 0.2s;
+    }
+
+    .interest-item:hover {
+      transform: translateY(-4px);
+      border-color: var(--mint);
+    }
+
+    /* 구체 아이콘 연출 */
+    .sphere-icon {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      margin-bottom: 12px;
+      background: radial-gradient(circle at 30% 30%, #5eead4, var(--mint));
+      box-shadow: 0 4px 10px var(--mint-glow);
+    }
+
+    .interest-item:nth-child(2) .sphere-icon {
+      background: radial-gradient(circle at 30% 30%, #fdba74, var(--accent-orange));
+    }
+
+    .interest-item:nth-child(3) .sphere-icon {
+      background: radial-gradient(circle at 30% 30%, #a5f3fc, #0284c7);
+    }
+
+    .interest-item h3 {
+      font-size: 1.1rem;
+      margin-bottom: 8px;
+    }
+
+    .interest-item p {
+      color: var(--text-sub);
+      font-size: 0.95rem;
+      word-break: keep-all;
+    }
+
+    /* 3. MY QUESTION */
+    .question-card {
+      background: linear-gradient(135deg, rgba(45, 212, 191, 0.05) 0%, var(--card-bg) 100%);
+    }
+
+    .question-box {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--text-main);
+      padding: 16px 0;
+      border-left: 2px solid var(--mint);
+      padding-left: 16px;
+      margin-top: 8px;
+      word-break: keep-all;
+    }
+
+    /* 4. MY FUTURE */
+    .future-content {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .future-goal {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--mint);
+    }
+
+    .future-desc {
+      color: var(--text-sub);
+      font-size: 1rem;
+      word-break: keep-all;
+    }
+
+    /* 푸터 */
+    footer {
+      text-align: center;
+      padding: 20px 0;
+      color: var(--text-sub);
+      font-size: 0.85rem;
+    }
+
+    /* 모바일 맞춤 반응형 설정 */
+    @media (max-width: 600px) {
+      body {
+        padding: 12px;
+      }
+      .card {
+        padding: 20px;
+      }
+      .profile-card h1 {
+        font-size: 1.4rem;
+      }
+      .question-box {
+        font-size: 1.05rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- 헤더 영역 -->
+    <header>
+      <div class="logo">Future.zip</div>
+      <div class="tag">High School Tech Student</div>
+    </header>
+
+    <!-- 1. MY PROFILE -->
+    <section class="card profile-card">
+      <div class="section-title">MY PROFILE</div>
+      <h1>공학 기술로 더 편리한 세상을 꿈꾸는 고등학생입니다.</h1>
+      <p>상상을 현실로 만드는 기술에 매료되어 원리를 탐구하고 아이디어를 정리하고 있습니다.</p>
+    </section>
+
+    <!-- 2. MY INTEREST -->
+    <section class="card">
+      <div class="section-title">MY INTEREST</div>
+      <div class="interest-grid">
+        <div class="interest-item">
+          <div class="sphere-icon"></div>
+          <h3>인공지능 & 소프트웨어</h3>
+          <p>데이터가 스스로 학습하며 일상의 문제를 효율적으로 해결하는 과정에 관심이 많습니다.</p>
+        </div>
+        <div class="interest-item">
+          <div class="sphere-icon"></div>
+          <h3>로봇 공학</h3>
+          <p>하드웨어와 소프트웨어가 결합하여 움직이는 기계 구조 및 제어 방식에 큰 흥미를 느낍니다.</p>
+        </div>
+        <div class="interest-item">
+          <div class="sphere-icon"></div>
+          <h3>친환경 미래 에너지</h3>
+          <p>지속 가능한 미래를 위해 효율적인 에너지 변환 및 저장 기술을 탐구하고 싶습니다.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. MY QUESTION -->
+    <section class="card question-card">
+      <div class="section-title">MY QUESTION</div>
+      <div class="question-box">
+        "인공지능과 자율주행 기술은 어떻게 도시 교통의 효율성과 안전성을 극대화할 수 있을까?"
+      </div>
+    </section>
+
+    <!-- 4. MY FUTURE -->
+    <section class="card">
+      <div class="section-title">MY FUTURE</div>
+      <div class="future-content">
+        <div class="future-goal">미래 모빌리티 및 로봇공학 엔지니어</div>
+        <div class="future-desc">
+          사람들의 이동을 더욱 안전하고 편리하게 만드는 모빌리티 및 로봇 시스템을 연구하고 개발하는 엔지니어가 되고 싶습니다. 차근차근 기초 학문을 쌓아 사회에 기여하는 기술을 만들 것입니다.
+        </div>
+      </div>
+    </section>
+
+    <!-- 푸터 -->
+    <footer>
+      <p>© Future.zip — High School Engineering Portfolio</p>
+    </footer>
+  </div>
+
+</body>
+</html>
